@@ -12,8 +12,20 @@ export function radialPoint(
   center: Point
 ): Point {
   return {
-    x: center.x + radius * Math.cos(angle * (Math.PI / 180)),
-    y: center.y + radius * Math.sin(angle * (Math.PI / 180)),
+    x:
+      Math.round(
+        (center.x +
+          radius * Math.cos(angle * (Math.PI / 180)) +
+          Number.EPSILON) *
+          10000
+      ) / 10000,
+    y:
+      Math.round(
+        (center.y +
+          radius * Math.sin(angle * (Math.PI / 180)) +
+          Number.EPSILON) *
+          10000
+      ) / 10000,
   };
 }
 
@@ -28,3 +40,22 @@ export function radialPointString(
 ): string {
   return pointString(radialPoint(angle, radius, point));
 }
+
+export const replaceSelfClosingTags = (input: string): string => {
+  const matches = [
+    /><\/use>/g,
+    /><\/path>/g,
+    /><\/circle>/g,
+    /><\/rect>/g,
+    /><\/line>/g,
+    /><\/feFlood>/g,
+    /><\/feMorphology>/g,
+    /><\/feComposite>/g,
+    /><\/feMergeNode>/g,
+  ];
+  matches.forEach(match => (input = input.replace(match, ' />')));
+  return input;
+};
+
+export const round = (input: number, places: number): number =>
+  Math.round((input + Number.EPSILON) * places) / places;

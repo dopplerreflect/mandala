@@ -1,14 +1,12 @@
-import { PHIm1, radialPointString } from '../utils';
+import { PHIm1, radialPointString, round } from '../utils';
 
 import SVGTag from '../components/SVGTag';
 import Outline from '../components/filters/outline';
 
 const width = 1080;
 const [cx, cy] = Array(2).fill(width / 2);
-const r = cx * PHIm1;
-const r2 = r * PHIm1;
-
-const angles = [...Array(5).keys()].map(k => (360 / 5) * k - 90);
+const r = round(cx * PHIm1, 10e3);
+const r2 = round(r * PHIm1, 10e3);
 
 const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: cx, y: cx });
@@ -19,7 +17,7 @@ export default function SixArc() {
       <defs>
         <Outline
           id="filter"
-          radius={cx * PHIm1 ** 13}
+          radius={round(cx * PHIm1 ** 13, 10e3)}
           color="hsl(240, 100%, 75%)"
         />
       </defs>

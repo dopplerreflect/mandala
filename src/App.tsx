@@ -1,5 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { replaceSelfClosingTags } from './utils';
+
+import format from 'xml-formatter';
+
 import './App.css';
 //@ts-ignore
 import Images from './images/index';
@@ -45,7 +49,14 @@ const App = () => {
   Component = Images[imageIndex];
 
   return showSource ? (
-    <code>{ReactDOMServer.renderToString(<Component />)}</code>
+    <code>
+      {format(
+        replaceSelfClosingTags(ReactDOMServer.renderToString(<Component />)),
+        {
+          indentation: '  ',
+        }
+      )}
+    </code>
   ) : (
     <Component />
   );

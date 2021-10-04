@@ -8,17 +8,18 @@
   font-size: 3em;
 }
 code {
+  white-space: pre;
   font-family: 'Courier New', Courier, monospace;
   color: white;
 }
 html {
   background-color: hsl(240, 50%, 10%);
 }
-#root {
+/* #root {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 svg {
   height: 100vh;
 }
