@@ -19,11 +19,13 @@ const App = () => {
   const handleKeyDown = (event: KeyboardEvent) => {
     switch (event.code) {
       case 'ArrowRight':
+      case 'KeyN':
         setImageIndex(imageIndex =>
           imageKeys.includes(imageIndex + 1) ? imageIndex + 1 : imageIndex
         );
         break;
       case 'ArrowLeft':
+      case 'KeyP':
         setImageIndex(imageIndex =>
           imageKeys.includes(imageIndex - 1) ? imageIndex - 1 : imageIndex
         );
@@ -35,11 +37,6 @@ const App = () => {
         break;
     }
   };
-
-  const renderSVGSource = useCallback(() => {
-    const Component = Images[imageIndex];
-    console.log(ReactDOMServer.renderToString(<Component />));
-  }, [imageIndex]);
 
   useEffect(() => {
     document.addEventListener('keyup', handleKeyDown);
@@ -58,7 +55,9 @@ const App = () => {
       )}
     </code>
   ) : (
-    <Component />
+    <image>
+      <Component />
+    </image>
   );
 };
 
