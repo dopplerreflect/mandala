@@ -10,7 +10,7 @@
 html {
   background-color: hsl(240, 50%, 10%);
 }
-image {
+.svg {
   display: flex;
   align-items: center;
   justify-content: center;

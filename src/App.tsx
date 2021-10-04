@@ -55,9 +55,9 @@ const App = () => {
       )}
     </code>
   ) : (
-    <image>
+    <div className="svg">
       <Component />
-    </image>
+    </div>
   );
 };
 
