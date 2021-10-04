@@ -1,6 +1,20 @@
 .App {
   background-color: hsl(225, 50%, 5%);
   height: 100vh;
-  color: hsl(45, 50%, 50%);
+}
+.Header {
+  color: hsl(45, 100%, 50%);
   text-align: center;
+  font-size: 3em;
+}
+html {
+  background-color: hsl(240, 50%, 10%);
+}
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+svg {
+  height: 100vh;
 }
