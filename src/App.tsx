@@ -5,10 +5,11 @@ import { replaceSelfClosingTags } from './utils';
 import formatXML from 'xml-formatter';
 
 import './App.css';
-//@ts-ignore
+
 import * as Images from './images/index';
 
 const imageKeys = Object.keys(Images);
+const images = Object.values(Images);
 
 const imageIndexFromDocumentHash = (): false | number => {
   const imageIndexFromDocumentHash = imageKeys.indexOf(
@@ -32,13 +33,13 @@ const App = () => {
       case 'ArrowDown':
       case 'KeyN':
         setImageIndex(imageIndex =>
-          imageIndex + 1 === imageKeys.length ? 0 : imageIndex + 1
+          imageIndex + 1 === images.length ? 0 : imageIndex + 1
         );
         break;
       case 'ArrowUp':
       case 'KeyP':
         setImageIndex(imageIndex =>
-          imageIndex - 1 === -1 ? imageKeys.length - 1 : imageIndex - 1
+          imageIndex - 1 === -1 ? images.length - 1 : imageIndex - 1
         );
         break;
       case 'KeyS':
@@ -72,8 +73,7 @@ const App = () => {
     document.location.hash = imageKeys[imageIndex];
   }, [imageIndex]);
 
-  //@ts-ignore
-  Component = Images[imageKeys[imageIndex]];
+  Component = images[imageIndex];
 
   return showSource ? (
     <code>
@@ -95,11 +95,11 @@ const App = () => {
       {displayMenu && (
         <div id="menu">
           <ul>
-            {imageKeys.map(name => {
-              //@ts-ignore
-              let Component = Images[name];
+            {imageKeys.map((name, i) => {
+              let Component = images[i];
               return (
                 <li
+                  key={name}
                   className={
                     imageIndex === imageKeys.indexOf(name) ? 'active' : ''
                   }
