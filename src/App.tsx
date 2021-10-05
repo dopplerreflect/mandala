@@ -30,17 +30,13 @@ const App = () => {
       case 'ArrowRight':
       case 'KeyN':
         setImageIndex(imageIndex =>
-          [...imageKeys.keys()].includes(imageIndex + 1)
-            ? imageIndex + 1
-            : imageIndex
+          imageIndex + 1 === imageKeys.length ? 0 : imageIndex + 1
         );
         break;
       case 'ArrowLeft':
       case 'KeyP':
         setImageIndex(imageIndex =>
-          [...imageKeys.keys()].includes(imageIndex - 1)
-            ? imageIndex - 1
-            : imageIndex
+          imageIndex - 1 === -1 ? imageKeys.length - 1 : imageIndex - 1
         );
         break;
       case 'KeyS':
