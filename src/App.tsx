@@ -10,9 +10,16 @@ import * as Images from './images/index';
 
 const imageKeys = Object.keys(Images);
 
+const imageIndexFromDocumentHash = (): false | number => {
+  const imageIndexFromDocumentHash = imageKeys.indexOf(
+    document.location.hash.replace(/^#/, '')
+  );
+  return imageIndexFromDocumentHash === -1 ? false : imageIndexFromDocumentHash;
+};
+
 const App = () => {
   const [imageIndex, setImageIndex] = useState(
-    imageKeys.indexOf(document.location.hash.replace(/^#/, '')) || 0
+    imageIndexFromDocumentHash() || 0
   );
   const [showSource, setShowSource] = useState(false);
 
