@@ -1,7 +1,6 @@
 import { PHIm1, radialPoint, radialPointString, round } from '../utils';
-
+import { SplitStar } from '.';
 import SVGTag from '../components/SVGTag';
-import Outline from '../components/filters/outline';
 import Star from '../components/star';
 
 const width = 1080;
@@ -43,6 +42,8 @@ export function StarTangles() {
           <circle cx={cx} cy={cy} r={r2} fill="black" />
         </mask>
       </defs>
+      <SplitStar />
+
       <use
         href="#circle-of-rectangles"
         fill={`hsl(${240} 100% 50%)`}
@@ -52,18 +53,20 @@ export function StarTangles() {
         let a = (360 / divisions) * k;
         return (
           <use
+            key={k}
             href="#circle-of-rectangles"
             stroke={`hsl(${200} 100% 50%)`}
             fill="none"
             fillOpacity={0}
             transform={`rotate(${a} ${cx} ${cy})`}
-            // mask="url(#mask)"
+            mask="url(#mask)"
           />
         );
       })}
       <g id="stars">
         {[-18, 36, 72, 90].map(a => (
           <Star
+            key={a}
             cx={cx}
             cy={cy}
             r={r}
