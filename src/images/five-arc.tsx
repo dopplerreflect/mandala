@@ -13,7 +13,7 @@ const angles = [...Array(5).keys()].map(k => (360 / 5) * k - 90);
 const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: cx, y: cx });
 
-export default function FiveArc() {
+export function FiveArc() {
   return (
     <SVGTag width={width} height={width}>
       <defs>

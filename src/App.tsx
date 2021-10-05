@@ -1,33 +1,39 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { replaceSelfClosingTags } from './utils';
 
-import format from 'xml-formatter';
+import formatXML from 'xml-formatter';
 
 import './App.css';
 //@ts-ignore
-import Images from './images/index';
+import * as Images from './images/index';
 
-const imageKeys = [...Images.keys()];
+const imageKeys = Object.keys(Images);
 
 const App = () => {
-  const [imageIndex, setImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(
+    imageKeys.indexOf(document.location.hash.replace(/^#/, '')) || 0
+  );
   const [showSource, setShowSource] = useState(false);
 
-  let Component;
+  let Component: React.FunctionComponent;
 
   const handleKeyDown = (event: KeyboardEvent) => {
     switch (event.code) {
       case 'ArrowRight':
       case 'KeyN':
         setImageIndex(imageIndex =>
-          imageKeys.includes(imageIndex + 1) ? imageIndex + 1 : imageIndex
+          [...imageKeys.keys()].includes(imageIndex + 1)
+            ? imageIndex + 1
+            : imageIndex
         );
         break;
       case 'ArrowLeft':
       case 'KeyP':
         setImageIndex(imageIndex =>
-          imageKeys.includes(imageIndex - 1) ? imageIndex - 1 : imageIndex
+          [...imageKeys.keys()].includes(imageIndex - 1)
+            ? imageIndex - 1
+            : imageIndex
         );
         break;
       case 'KeyS':
@@ -38,16 +44,29 @@ const App = () => {
     }
   };
 
+  const handleHashChange = () => {
+    setImageIndex(imageKeys.indexOf(document.location.hash.replace(/^#/, '')));
+  };
+
   useEffect(() => {
     document.addEventListener('keyup', handleKeyDown);
-    return () => document.removeEventListener('keyup', handleKeyDown);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      document.removeEventListener('keyup', handleKeyDown);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
-  Component = Images[imageIndex];
+  useEffect(() => {
+    document.location.hash = imageKeys[imageIndex];
+  }, [imageIndex]);
+
+  //@ts-ignore
+  Component = Images[imageKeys[imageIndex]];
 
   return showSource ? (
     <code>
-      {format(
+      {formatXML(
         replaceSelfClosingTags(ReactDOMServer.renderToString(<Component />)),
         {
           indentation: '  ',
@@ -57,6 +76,7 @@ const App = () => {
   ) : (
     <div className="svg">
       <Component />
+      {/* <code>{imageKeys[imageIndex]}</code> */}
     </div>
   );
 };

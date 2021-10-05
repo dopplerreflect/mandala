@@ -11,7 +11,7 @@ const r2 = round(r * PHIm1, 10e3);
 const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: cx, y: cx });
 
-export default function SixArc() {
+export function SixArc() {
   return (
     <SVGTag width={width} height={width}>
       <defs>
