@@ -30,3 +30,25 @@ code {
   left: 0;
   color: white;
 }
+#menu {
+  width: calc(100vh / 8 + 2px);
+  color: white;
+  height: 100vh;
+}
+
+#menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+#menu li {
+  list-style-type: none;
+  border: 1px solid black;
+}
+#menu li.active {
+  border: 1px solid yellow;
+}
+#menu svg {
+  width: calc(100vh / 8);
+  height: calc(100vh / 8);
+}

@@ -23,6 +23,7 @@ const App = () => {
   );
   const [showSource, toggleShowSource] = useState(false);
   const [displayName, toggleDisplayName] = useState(false);
+  const [displayMenu, toggleDisplayMenu] = useState(false);
 
   let Component: React.FunctionComponent;
 
@@ -45,6 +46,10 @@ const App = () => {
         break;
       case 'KeyD':
         toggleDisplayName(on => !on);
+        break;
+      case 'KeyM':
+        toggleDisplayMenu(on => !on);
+        break;
       default:
         break;
     }
@@ -87,6 +92,26 @@ const App = () => {
       >
         {imageKeys[imageIndex]}
       </div>
+      {displayMenu && (
+        <div id="menu">
+          <ul>
+            {imageKeys.map(name => {
+              //@ts-ignore
+              let Component = Images[name];
+              return (
+                <li
+                  className={
+                    imageIndex === imageKeys.indexOf(name) ? 'active' : ''
+                  }
+                  onClick={() => setImageIndex(imageKeys.indexOf(name))}
+                >
+                  <Component />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
       <Component />
     </div>
   );

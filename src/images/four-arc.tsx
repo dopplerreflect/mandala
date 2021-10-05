@@ -26,7 +26,6 @@ export function FourArc() {
       <rect width={width} height={width} fill="hsl(225, 50%, 5%)" />
       <g id="four-arc" filter="url(#filter)" style={{ display: 'inline' }}>
         <path
-          id="tri"
           d={[
             `M${rps(angles[0], r)}`,
             `A${r2},${r2} 0 0 0 ${rps(angles[1], r)}`,
@@ -39,7 +38,6 @@ export function FourArc() {
           stroke="hsl(45, 100%, 33%)"
           fill="none"
         />
-        {/* <use href="#tri" transform={`rotate(60, ${cx}, ${cy})`} /> */}
       </g>
     </SVGTag>
   );
