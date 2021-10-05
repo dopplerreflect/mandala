@@ -29,13 +29,13 @@ const App = () => {
 
   const handleKeyDown = (event: KeyboardEvent) => {
     switch (event.code) {
-      case 'ArrowRight':
+      case 'ArrowDown':
       case 'KeyN':
         setImageIndex(imageIndex =>
           imageIndex + 1 === imageKeys.length ? 0 : imageIndex + 1
         );
         break;
-      case 'ArrowLeft':
+      case 'ArrowUp':
       case 'KeyP':
         setImageIndex(imageIndex =>
           imageIndex - 1 === -1 ? imageKeys.length - 1 : imageIndex - 1
