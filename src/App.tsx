@@ -21,7 +21,8 @@ const App = () => {
   const [imageIndex, setImageIndex] = useState(
     imageIndexFromDocumentHash() || 0
   );
-  const [showSource, setShowSource] = useState(false);
+  const [showSource, toggleShowSource] = useState(false);
+  const [displayName, toggleDisplayName] = useState(false);
 
   let Component: React.FunctionComponent;
 
@@ -40,8 +41,10 @@ const App = () => {
         );
         break;
       case 'KeyS':
-        setShowSource(showSource => !showSource);
+        toggleShowSource(showSource => !showSource);
         break;
+      case 'KeyD':
+        toggleDisplayName(on => !on);
       default:
         break;
     }
@@ -78,8 +81,13 @@ const App = () => {
     </code>
   ) : (
     <div className="svg">
+      <div
+        style={{ display: displayName ? 'inline' : 'none' }}
+        className="image-name"
+      >
+        {imageKeys[imageIndex]}
+      </div>
       <Component />
-      {/* <code>{imageKeys[imageIndex]}</code> */}
     </div>
   );
 };
