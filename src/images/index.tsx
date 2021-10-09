@@ -5,3 +5,4 @@ export { StarTangles } from './star-tangles';
 export { SplitStar } from './split-star';
 export { TimesTable } from './times-table';
 export { StarMandala } from './star-mandala';
+export { CornerReflector } from './newthing';
