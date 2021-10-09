@@ -1,7 +1,7 @@
 export const PHI = (Math.sqrt(5) + 1) / 2;
 export const PHIm1 = PHI - 1;
 
-type Point = {
+export type Point = {
   x: number;
   y: number;
 };
