@@ -13,6 +13,12 @@ const Cardiod = () => {
 
   const polar = (angle: number): number => angle * (Math.PI / 180);
 
+  const cardioid = (angle: number, radius: number): number =>
+    (radius / 2) * (1 - Math.cos(polar(angle)));
+
+  const crp = (angle: number, radius: number): Point =>
+    rp(angle, cardioid(angle, radius));
+
   return (
     <SVGTag width={width} height={width}>
       <rect width={width} height={width} fill="black" />{' '}
@@ -21,13 +27,9 @@ const Cardiod = () => {
           {[...Array(360 / ad).keys()].map(a => (
             <circle
               key={a}
-              cx={
-                rp(a * ad, (r / 2) * (1 - Math.cos(polar(a * ad)))).x *
-                PHI ** (Math.PI / 10) //PHIm1
-              }
-              cy={rp(a * ad, (r / 2) * (1 - Math.cos(polar(a * ad)))).y}
-              r={r * PHIm1 ** 8}
-              // stroke="none"
+              cx={crp(a * ad, r).x * PHI ** (Math.PI / 10)}
+              cy={crp(a * ad, r).y}
+              r={r * PHIm1 ** 10}
               stroke={`hsl(${a * ad - 0}, 100%, 50%)`}
               fill="none"
             />
