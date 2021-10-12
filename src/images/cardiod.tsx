@@ -23,12 +23,13 @@ const Cardiod = () => {
               key={a}
               cx={
                 rp(a * ad, (r / 2) * (1 - Math.cos(polar(a * ad)))).x *
-                PHI ** PHIm1
+                PHI ** (Math.PI / 10) //PHIm1
               }
               cy={rp(a * ad, (r / 2) * (1 - Math.cos(polar(a * ad)))).y}
-              r={r * PHIm1 ** 10}
-              // stroke="white"
-              fill={`hsl(${a * ad - 30}, 100%, 50%)`}
+              r={r * PHIm1 ** 8}
+              // stroke="none"
+              stroke={`hsl(${a * ad - 0}, 100%, 50%)`}
+              fill="none"
             />
           ))}
         </g>
