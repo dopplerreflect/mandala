@@ -7,3 +7,4 @@ export { TimesTable } from './times-table';
 export { StarMandala } from './star-mandala';
 export { CornerReflector } from './corner-reflector';
 export { Cardiod } from './cardiod';
+export { Elliptical } from './elliptical';

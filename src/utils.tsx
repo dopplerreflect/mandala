@@ -59,3 +59,13 @@ export const replaceSelfClosingTags = (input: string): string => {
 
 export const round = (input: number, places: number): number =>
   Math.round((input + Number.EPSILON) * places) / places;
+
+/**
+ * Linear Interpolation
+ * @param start starting point
+ * @param end ending point
+ * @param t time
+ * @returns interpolated point
+ */
+export const lerp = (start: number, end: number, t: number) =>
+  start + (end - start) * t;
