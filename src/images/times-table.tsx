@@ -36,9 +36,9 @@ export const TimesTable = (): JSX.Element => {
   //   return () => document.removeEventListener('mousemove', handleMouseMove);
   // }, []);
 
-  const handleRangeChange = (event: ChangeEvent) =>
-    //@ts-ignore
-    setFactor(event.target.value);
+  // const handleRangeChange = (event: ChangeEvent) =>
+  //   //@ts-ignore
+  //   setFactor(event.target.value);
   // setFactor(factor => round(event.target.value, 10e2));
 
   // const requestRef = useRef();
@@ -56,14 +56,14 @@ export const TimesTable = (): JSX.Element => {
 
   return (
     <div>
-      <input
+      {/* <input
         type="range"
         min={0}
         max={360}
         step={1}
         value={factor}
         onChange={handleRangeChange}
-      />
+      /> */}
       <SVGTag width={width} height={width}>
         <path d={`M0 0H${width}V${width}H0Z`} />
         <g transform={`rotate(90 ${cx} ${cx})`}>
@@ -76,9 +76,9 @@ export const TimesTable = (): JSX.Element => {
             />
           ))}
         </g>
-        <text fontFamily="monospace" fontSize={24} x={0} y={24} fill="white">
+        {/* <text fontFamily="monospace" fontSize={24} x={0} y={24} fill="white">
           factor: {factor}
-        </text>
+        </text> */}
       </SVGTag>
     </div>
   );
