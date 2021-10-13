@@ -18,7 +18,7 @@ const width = 1080;
 const c = width / 2;
 const r = (c / 10) * 9;
 const fy = c - r * PHIm1;
-const d = 72;
+const d = 120;
 const a = 15;
 const ellipseAngles = [...Array(d).keys()].map(k => (360 / d) * k);
 const Elliptical = () => (
@@ -27,13 +27,12 @@ const Elliptical = () => (
       <mask id="mask">
         <rect width={width} height={width} fill="black" />
         <circle cx={c} cy={c} r={r} fill="white" />
-        {/* <circle cx={c} cy={c} r={r * PHIm1 ** 3.4} fill="black" /> */}
+        <circle cx={c} cy={c} r={r * PHIm1 ** 3.4} fill="black" />
       </mask>
       <g id="raything">
-        {ellipseAngles.map(
-          (a, i) =>
-            i % 1 === 0 && <path key={a} d={`M${c},${fy}L${rps(a, r)}`} />
-        )}
+        {ellipseAngles.map(a => (
+          <path key={a} d={`M${c},${fy}L${rps(a, r)}`} />
+        ))}
       </g>
       <g id="ellipsething">
         {ellipseAngles.map(a => (
@@ -47,12 +46,11 @@ const Elliptical = () => (
         ))}
       </g>
     </defs>
-    <rect width={width} height={width} fill={`hsl(270, 100%, 5%)`} />
-    <circle cx={c} cy={c} r={r} stroke="hsl(270, 100%, 50%)" fill="none" />
+    <rect width={width} height={width} fill={`hsl(216, 100%, 100%)`} />
     {[...Array(a).keys()].map(k => (
       <use
         xlinkHref="#raything"
-        stroke={`hsl(210, 100%, 50%)`}
+        stroke={`hsl(216, 100%, 50%)`}
         strokeWidth={1}
         transform={`rotate(${(360 / a) * k}, ${c}, ${c})`}
         mask="url(#mask)"
@@ -62,7 +60,7 @@ const Elliptical = () => (
     {[...Array(a).keys()].map(k => (
       <use
         xlinkHref="#ellipsething"
-        stroke={`hsl(240, 100%, 100%)`}
+        stroke={`hsl(60, 100%, 100%)`}
         transform={`rotate(${(360 / a) * k}, ${c}, ${c})`}
         mask="url(#mask)"
       />
