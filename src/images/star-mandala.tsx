@@ -5,7 +5,7 @@ import { PHIm1, radialPointString, radialPoint, Point } from '../utils';
 
 const StarMandala = () => {
   const width = 1080;
-  const c = width / 2;
+  const c = 0;
   const or = (width / 10) * 4.5;
   const r = [...Array(8).keys()].map(k => or * PHIm1 ** k);
   const a = [...Array(60).keys()].map(k => 6 * k);
@@ -59,7 +59,13 @@ const StarMandala = () => {
           <use xlinkHref="#petal" transform={`rotate(288, ${c}, ${c})`} />
         </g>
       </defs>
-      <rect width={width} height={width} fill="black" />
+      <rect
+        x={-width / 2}
+        y={-width / 2}
+        width={width}
+        height={width}
+        fill="black"
+      />
       <circle
         cx={c}
         cy={c}

@@ -3,8 +3,8 @@ import SVGTag from '../components/SVGTag';
 import { PHI, PHIm1, Point, radialPoint } from '../utils';
 const Cardiod = () => {
   const width = 1080;
-  const c = width / 2;
-  const r = (c / 10) * 9;
+  const c = 0; // width / 2;
+  const r = 432;
   const ad = 2.25;
   const gd = 5;
   const a = [...Array(gd).keys()].map(k => (360 / gd) * k);
@@ -21,7 +21,13 @@ const Cardiod = () => {
 
   return (
     <SVGTag width={width} height={width}>
-      <rect width={width} height={width} fill="black" />{' '}
+      <rect
+        x={-width / 2}
+        y={-width / 2}
+        width={width}
+        height={width}
+        fill="black"
+      />{' '}
       <defs>
         <g id="cardioid" transform={`rotate(90, ${c}, ${c})`}>
           {[...Array(360 / ad).keys()].map(a => (

@@ -4,8 +4,8 @@ import SVGTag from '../components/SVGTag';
 import Outline from '../components/filters/outline';
 
 const width = 1080;
-const [cx, cy] = Array(2).fill(width / 2);
-const r = round(cx * PHIm1, 10e3);
+const [cx, cy] = Array(2).fill(0);
+const r = round((width / 2) * PHIm1, 10e3);
 const r2 = round(r * PHIm1, 10e3);
 
 const rps = (angle: number, radius: number): string =>
@@ -17,11 +17,17 @@ export function SixArc() {
       <defs>
         <Outline
           id="filter"
-          radius={round(cx * PHIm1 ** 13, 10e3)}
+          radius={round((width / 2) * PHIm1 ** 13, 10e3)}
           color="hsl(240, 100%, 75%)"
         />
       </defs>
-      <rect width={width} height={width} fill="hsl(225, 50%, 5%)" />
+      <rect
+        x={-width / 2}
+        y={-width / 2}
+        width={width}
+        height={width}
+        fill="hsl(225, 50%, 5%)"
+      />
       <g id="flower" filter="url(#filter)" style={{ display: 'inline' }}>
         <path
           id="tri"
@@ -32,7 +38,7 @@ export function SixArc() {
             `A${r2},${r2} 0 0 0 ${rps(0, r)}`,
             `Z`,
           ].join(' ')}
-          strokeWidth={cx * PHIm1 ** 8}
+          strokeWidth={(width / 2) * PHIm1 ** 8}
           stroke="hsl(45, 100%, 33%)"
           fill="none"
         />

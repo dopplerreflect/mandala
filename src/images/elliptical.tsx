@@ -15,8 +15,8 @@ const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: c, y: c });
 
 const width = 1080;
-const c = width / 2;
-const r = (c / 10) * 9;
+const c = 0;
+const r = (width / 2 / 10) * 9;
 const fy = c - r * PHIm1;
 const d = 120;
 const a = 15;
@@ -25,9 +25,15 @@ const Elliptical = () => (
   <SVGTag width={width} height={width}>
     <defs>
       <mask id="mask">
-        <rect width={width} height={width} fill="black" />
+        <rect
+          x={-width / 2}
+          y={-width / 2}
+          width={width}
+          height={width}
+          fill="black"
+        />
         <circle cx={c} cy={c} r={r} fill="white" />
-        <circle cx={c} cy={c} r={r * PHIm1 ** 3.4} fill="black" />
+        {/* <circle cx={c} cy={c} r={r * PHIm1 ** 3.4} fill="black" /> */}
       </mask>
       <g id="raything">
         {ellipseAngles.map(a => (
@@ -46,11 +52,17 @@ const Elliptical = () => (
         ))}
       </g>
     </defs>
-    <rect width={width} height={width} fill={`hsl(216, 100%, 100%)`} />
+    <rect
+      x={-width / 2}
+      y={-width / 2}
+      width={width}
+      height={width}
+      fill={`hsl(216, 100%, 0%)`}
+    />
     {[...Array(a).keys()].map(k => (
       <use
         xlinkHref="#raything"
-        stroke={`hsl(216, 100%, 50%)`}
+        stroke={`hsl(216, 100%, 100%)`}
         strokeWidth={1}
         transform={`rotate(${(360 / a) * k}, ${c}, ${c})`}
         mask="url(#mask)"
@@ -60,7 +72,7 @@ const Elliptical = () => (
     {[...Array(a).keys()].map(k => (
       <use
         xlinkHref="#ellipsething"
-        stroke={`hsl(60, 100%, 100%)`}
+        stroke={`hsl(240, 100%, 5%)`}
         transform={`rotate(${(360 / a) * k}, ${c}, ${c})`}
         mask="url(#mask)"
       />

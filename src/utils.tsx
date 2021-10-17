@@ -53,7 +53,10 @@ export const replaceSelfClosingTags = (input: string): string => {
     /><\/feComposite>/g,
     /><\/feMergeNode>/g,
   ];
-  matches.forEach(match => (input = input.replace(match, ' />')));
+  // matches.forEach(match => (input = input.replace(match, ' />')));
+  for (const match of matches) {
+    input = input.replace(match, ' />');
+  }
   return input;
 };
 

@@ -9,7 +9,7 @@ import SVGTag from '../components/SVGTag';
 import { Point, radialPoint, radialPointString, round } from '../utils';
 
 const width = 1080;
-const cx = width / 2;
+const cx = 0;
 const r = (width / 10) * 4;
 const divisions = 360;
 
@@ -53,7 +53,11 @@ export const TimesTable = () => {
 
   return (
     <SVGTag width={width} height={width}>
-      <path d={`M0 0H${width}V${width}H0Z`} />
+      <path
+        d={`M${-width / 2} ${-width / 2}H${width / 2}V${width / 2}H${
+          -width / 2
+        }Z`}
+      />
       <g transform={`rotate(90 ${cx} ${cx})`}>
         {angles.map((a, i) => (
           <path
