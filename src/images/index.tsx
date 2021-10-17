@@ -8,3 +8,4 @@ export { StarMandala } from './star-mandala';
 export { CornerReflector } from './corner-reflector';
 export { Cardiod } from './cardiod';
 export { Elliptical } from './elliptical';
+export { MaurerRose } from './maurer-rose';
