@@ -9,7 +9,7 @@ const CornerReflector = () => {
   for (let i = 1; i <= w; i = i * PHI) fibPoints.push(i);
 
   return (
-    <SVGTag width={w} height={w}>
+    <SVGTag id="CornerReflector" width={w} height={w}>
       <rect x={-w / 2} y={-w / 2} width={w} height={w} fill="black" />
       <g id="fibrays">
         {fibPoints.map((p, i) => (

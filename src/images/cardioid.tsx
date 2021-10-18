@@ -1,7 +1,6 @@
-import Star from '../components/star';
 import SVGTag from '../components/SVGTag';
 import { PHI, PHIm1, Point, radialPoint } from '../utils';
-const Cardiod = () => {
+const Cardioid = () => {
   const width = 1080;
   const c = 0; // width / 2;
   const r = 432;
@@ -20,7 +19,7 @@ const Cardiod = () => {
     rp(angle, cardioid(angle, radius));
 
   return (
-    <SVGTag width={width} height={width}>
+    <SVGTag id="Cardioid" width={width} height={width}>
       <rect
         x={-width / 2}
         y={-width / 2}
@@ -43,10 +42,14 @@ const Cardiod = () => {
         </g>
       </defs>
       {a.map(a => (
-        <use xlinkHref="#cardioid" transform={`rotate(${a}, ${c}, ${c})`} />
+        <use
+          key={a}
+          xlinkHref="#cardioid"
+          transform={`rotate(${a}, ${c}, ${c})`}
+        />
       ))}
     </SVGTag>
   );
 };
 
-export { Cardiod };
+export { Cardioid };

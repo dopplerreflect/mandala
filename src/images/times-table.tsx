@@ -52,7 +52,7 @@ export const TimesTable = () => {
   // }, []);
 
   return (
-    <SVGTag width={width} height={width}>
+    <SVGTag id="TimesTable" width={width} height={width}>
       <path
         d={`M${-width / 2} ${-width / 2}H${width / 2}V${width / 2}H${
           -width / 2

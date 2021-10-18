@@ -17,7 +17,7 @@ const StarMandala = () => {
     radialPointString(angle, radius, { x: c, y: c });
 
   return (
-    <SVGTag width={width} height={width}>
+    <SVGTag id="StarMandala" width={width} height={width}>
       <defs>
         <radialGradient id="radialGradient">
           <stop offset="0%" stopColor="red" />
@@ -75,6 +75,7 @@ const StarMandala = () => {
       />
       {r.map((r, i) => (
         <circle
+          key={i}
           cx={c}
           cy={c}
           r={r}

@@ -22,7 +22,7 @@ const d = 120;
 const a = 15;
 const ellipseAngles = [...Array(d).keys()].map(k => (360 / d) * k);
 const Elliptical = () => (
-  <SVGTag width={width} height={width}>
+  <SVGTag id="Elliptical" width={width} height={width}>
     <defs>
       <mask id="mask">
         <rect
@@ -43,6 +43,7 @@ const Elliptical = () => (
       <g id="ellipsething">
         {ellipseAngles.map(a => (
           <path
+            key={a}
             d={`M${c},${fy}L${rps(a, r)}`}
             transform={`rotate(90, ${round(
               lerp(c, rp(a, r).x, 0.5),
@@ -61,6 +62,7 @@ const Elliptical = () => (
     />
     {[...Array(a).keys()].map(k => (
       <use
+        key={k}
         xlinkHref="#raything"
         stroke={`hsl(216, 100%, 100%)`}
         strokeWidth={1}
@@ -71,6 +73,7 @@ const Elliptical = () => (
 
     {[...Array(a).keys()].map(k => (
       <use
+        key={k}
         xlinkHref="#ellipsething"
         stroke={`hsl(240, 100%, 5%)`}
         transform={`rotate(${(360 / a) * k}, ${c}, ${c})`}

@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SVGTag from '../components/SVGTag';
 
 const MaurerRose = (): JSX.Element => {
-  const showSlider = false;
   const width = 1080;
-  const n = 5;
-  const [d, setD] = useState(17);
+  const n = 12;
+  const [d, setD] = useState(143);
 
   const maurerVertices = [...Array(361).keys()].map(theta => {
     const k = (theta * d * Math.PI) / 180;
@@ -36,7 +35,31 @@ const MaurerRose = (): JSX.Element => {
           onChange={e => setD(~~e.target.value)}
         />
       </div> */}
-      <SVGTag width={width} height={width}>
+      <SVGTag id="MaurerRose" width={width} height={width}>
+        <filter id="glow">
+          <feFlood
+            floodColor={`hsl(255, 100%, 50%)`}
+            floodOpacity={1}
+            result="flood"
+          />
+          <feComposite
+            in="flood"
+            in2="SourceGraphic"
+            operator="in"
+            result="mask"
+          />
+          <feMorphology
+            in="mask"
+            operator="dilate"
+            radius="1"
+            result="dilate"
+          />
+          <feGaussianBlur in="dilate" stdDeviation="4" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
         <rect
           x={-width / 2}
           y={-width / 2}
@@ -45,8 +68,9 @@ const MaurerRose = (): JSX.Element => {
           fill="black"
         />
         <path
+          filter="url(#glow)"
           d={verticesPath}
-          stroke={`hsl(30, 100%, 50%)`}
+          stroke={`hsl(255, 100%, 70%)`}
           strokeWidth={2}
           strokeOpacity={1}
           fill="none"
@@ -54,8 +78,8 @@ const MaurerRose = (): JSX.Element => {
         />
         <path
           d={maurerVerticesPath}
-          stroke={`hsl(45, 100%, 50%)`}
-          fill={`hsl(30, 100%, 50%)`}
+          stroke={`hsl(270, 100%, 50%)`}
+          fill={`hsl(255, 100%, 50%)`}
           fillOpacity={0.5}
           // fillRule="evenodd"
           transform="rotate(180,0,0)"
