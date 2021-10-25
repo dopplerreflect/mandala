@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import SVGTag from '../components/SVGTag';
+import { useState } from 'react';
+import useSaveSVG from '@dopplerreflect/use-save-svg';
+// import useSaveSVG from '../../../use-save-svg/src/index';
 
 const MaurerRose = (): JSX.Element => {
   const width = 1080;
-  const n = 12;
+  const n = 5;
   const [d, setD] = useState(143);
 
   const maurerVertices = [...Array(361).keys()].map(theta => {
@@ -24,9 +25,10 @@ const MaurerRose = (): JSX.Element => {
   });
   const verticesPath = [`M0,0`, ...vertices].join(' ');
 
+  const svgRef = useSaveSVG();
   return (
     <>
-      {/* <div>
+      <div>
         <input
           type="range"
           min={1}
@@ -34,8 +36,13 @@ const MaurerRose = (): JSX.Element => {
           value={d}
           onChange={e => setD(~~e.target.value)}
         />
-      </div> */}
-      <SVGTag id="MaurerRose" width={width} height={width}>
+      </div>
+      <svg
+        ref={svgRef}
+        id={`MaurerRose-n${n}-d${d}`}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
+      >
         <filter id="glow">
           <feFlood
             floodColor={`hsl(255, 100%, 50%)`}
@@ -77,9 +84,10 @@ const MaurerRose = (): JSX.Element => {
           transform="rotate(180,0,0)"
         />
         <path
+          // filter="url(#glow)"
           d={maurerVerticesPath}
-          stroke={`hsl(270, 100%, 50%)`}
-          fill={`hsl(255, 100%, 50%)`}
+          stroke={`hsl(120, 100%, 50%)`}
+          fill={`hsl(240, 100%, 50%)`}
           fillOpacity={0.5}
           // fillRule="evenodd"
           transform="rotate(180,0,0)"
@@ -93,7 +101,7 @@ const MaurerRose = (): JSX.Element => {
         >
           n={n} d={d}
         </text>
-      </SVGTag>
+      </svg>
     </>
   );
 };
