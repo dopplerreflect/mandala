@@ -65,13 +65,13 @@ const Elliptical = () => {
           ))}
         </g>
       </defs>
-      <rect
+      {/* <rect
         x={-width / 2}
         y={-width / 2}
         width={width}
         height={width}
         fill={`hsl(216, 100%, 0%)`}
-      />
+      /> */}
       {[...Array(a).keys()].map(k => (
         <use
           key={k}

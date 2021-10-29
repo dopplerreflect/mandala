@@ -1,9 +1,9 @@
 import Outline from '../components/filters/outline';
-import Star from '../components/star';
-import SVGTag from '../components/SVGTag';
+import useSaveSVG from '@dopplerreflect/use-save-svg';
 import { PHIm1, radialPointString, radialPoint, Point } from '../utils';
 
 const StarMandala = () => {
+  const svgRef = useSaveSVG();
   const width = 1080;
   const c = 0;
   const or = (width / 10) * 4.5;
@@ -17,7 +17,12 @@ const StarMandala = () => {
     radialPointString(angle, radius, { x: c, y: c });
 
   return (
-    <SVGTag id="StarMandala" width={width} height={width}>
+    <svg
+      id="StarMandala"
+      ref={svgRef}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
+    >
       <defs>
         <radialGradient id="radialGradient">
           <stop offset="0%" stopColor="red" />
@@ -59,13 +64,13 @@ const StarMandala = () => {
           <use xlinkHref="#petal" transform={`rotate(288, ${c}, ${c})`} />
         </g>
       </defs>
-      <rect
+      {/* <rect
         x={-width / 2}
         y={-width / 2}
         width={width}
         height={width}
         fill="black"
-      />
+      /> */}
       <circle
         cx={c}
         cy={c}
@@ -102,7 +107,7 @@ const StarMandala = () => {
         />
         <use xlinkHref="#5points" stroke={`hsl(225, 100%, 85%)`} />
       </g>
-    </SVGTag>
+    </svg>
   );
 };
 

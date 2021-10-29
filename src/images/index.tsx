@@ -10,3 +10,4 @@ export { Cardioid } from './cardioid';
 export { Elliptical } from './elliptical';
 export { MaurerRose } from './maurer-rose';
 export { Epicycloid } from './Epicycloid';
+export { FlowerOfLife } from './FlowerOfLife';

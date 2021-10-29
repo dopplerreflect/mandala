@@ -1,7 +1,9 @@
 import SVGTag from '../components/SVGTag';
+import useSaveSVG from '@dopplerreflect/use-save-svg';
 import { PHI } from '../utils';
 
 const CornerReflector = () => {
+  const svgRef = useSaveSVG();
   const w = 1080;
   const c = 0;
 
@@ -9,8 +11,13 @@ const CornerReflector = () => {
   for (let i = 1; i <= w; i = i * PHI) fibPoints.push(i);
 
   return (
-    <SVGTag id="CornerReflector" width={w} height={w}>
-      <rect x={-w / 2} y={-w / 2} width={w} height={w} fill="black" />
+    <svg
+      ref={svgRef}
+      id="CornerReflector"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={`${-w / 2} ${-w / 2} ${w} ${w}`}
+    >
+      {/* <rect x={-w / 2} y={-w / 2} width={w} height={w} fill="black" /> */}
       <g id="fibrays">
         {fibPoints.map((p, i) => (
           <g key={i} transform={`rotate(0, ${c}, ${c})`}>
@@ -27,7 +34,7 @@ const CornerReflector = () => {
           </g>
         ))}
       </g>
-    </SVGTag>
+    </svg>
   );
 };
 

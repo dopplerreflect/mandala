@@ -1,11 +1,12 @@
-import SVGTag from '../components/SVGTag';
 import { PHI, PHIm1, Point, radialPoint } from '../utils';
+import useSaveSVG from '@dopplerreflect/use-save-svg';
 const Cardioid = () => {
+  const svgRef = useSaveSVG();
   const width = 1080;
   const c = 0; // width / 2;
   const r = 432;
-  const ad = 2.25;
-  const gd = 5;
+  const ad = 3;
+  const gd = 15;
   const a = [...Array(gd).keys()].map(k => (360 / gd) * k);
   const rp = (angle: number, radius: number): Point =>
     radialPoint(angle, radius, { x: c, y: c });
@@ -19,24 +20,29 @@ const Cardioid = () => {
     rp(angle, cardioid(angle, radius));
 
   return (
-    <SVGTag id="Cardioid" width={width} height={width}>
-      <rect
+    <svg
+      ref={svgRef}
+      id="Cardioid"
+      viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* <rect
         x={-width / 2}
         y={-width / 2}
         width={width}
         height={width}
-        fill="black"
-      />{' '}
+        fill="hsl(270, 100%, 2%)"
+      />{' '} */}
       <defs>
         <g id="cardioid" transform={`rotate(90, ${c}, ${c})`}>
           {[...Array(360 / ad).keys()].map(a => (
             <circle
               key={a}
-              cx={crp(a * ad, r).x * PHI ** (Math.PI / 10)}
+              cx={crp(a * ad, r).x}
               cy={crp(a * ad, r).y}
               r={r * PHIm1 ** 10}
               stroke={`hsl(${a * ad - 0}, 100%, 50%)`}
-              fill="none"
+              fill={`hsl(${a * ad - 0}, 100%, 50%)`}
             />
           ))}
         </g>
@@ -48,7 +54,7 @@ const Cardioid = () => {
           transform={`rotate(${a}, ${c}, ${c})`}
         />
       ))}
-    </SVGTag>
+    </svg>
   );
 };
 

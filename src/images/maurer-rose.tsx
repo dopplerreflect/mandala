@@ -5,7 +5,7 @@ import useSaveSVG from '@dopplerreflect/use-save-svg';
 const MaurerRose = (): JSX.Element => {
   const width = 1080;
   const n = 5;
-  const [d, setD] = useState(143);
+  const [d, setD] = useState(1);
 
   const maurerVertices = [...Array(361).keys()].map(theta => {
     const k = (theta * d * Math.PI) / 180;
@@ -28,7 +28,7 @@ const MaurerRose = (): JSX.Element => {
   const svgRef = useSaveSVG();
   return (
     <>
-      <div>
+      {/* <div>
         <input
           type="range"
           min={1}
@@ -36,7 +36,7 @@ const MaurerRose = (): JSX.Element => {
           value={d}
           onChange={e => setD(~~e.target.value)}
         />
-      </div>
+      </div> */}
       <svg
         ref={svgRef}
         id={`MaurerRose-n${n}-d${d}`}
@@ -67,13 +67,13 @@ const MaurerRose = (): JSX.Element => {
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <rect
+        {/* <rect
           x={-width / 2}
           y={-width / 2}
           width={width}
           height={width}
           fill="black"
-        />
+        /> */}
         <path
           filter="url(#glow)"
           d={verticesPath}
@@ -92,7 +92,7 @@ const MaurerRose = (): JSX.Element => {
           // fillRule="evenodd"
           transform="rotate(180,0,0)"
         />
-        <text
+        {/* <text
           x={-width / 2}
           y={-width / 2 + 16}
           fontSize={16}
@@ -100,7 +100,7 @@ const MaurerRose = (): JSX.Element => {
           fill="white"
         >
           n={n} d={d}
-        </text>
+        </text> */}
       </svg>
     </>
   );
