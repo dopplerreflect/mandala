@@ -11,3 +11,4 @@ export { Elliptical } from './elliptical';
 export { MaurerRose } from './maurer-rose';
 export { Epicycloid } from './Epicycloid';
 export { FlowerOfLife } from './FlowerOfLife';
+export { DRLogo } from './dr-logo';
