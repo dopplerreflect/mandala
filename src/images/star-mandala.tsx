@@ -21,6 +21,7 @@ const StarMandala = () => {
       id="StarMandala"
       ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
     >
       <defs>

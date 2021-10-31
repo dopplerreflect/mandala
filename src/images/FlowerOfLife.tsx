@@ -1,4 +1,5 @@
 import useSaveSVG from '@dopplerreflect/use-save-svg';
+import Screenshot from './fol-bg.png';
 
 type Point = {
   x: number;
@@ -14,6 +15,8 @@ const angles = [...Array(6).keys()].map(k => ((Math.PI * 2) / 6) * k);
 const angles24 = [...Array(24).keys()].map(k => ((Math.PI * 2) / 24) * k);
 const angles12 = [...Array(12).keys()].map(k => (360 / 12) * k);
 
+console.log(Screenshot);
+
 const FlowerOfLife = () => {
   const svgRef = useSaveSVG();
   const w = 1080;
@@ -26,37 +29,24 @@ const FlowerOfLife = () => {
       xmlns="http://www.w3.org/2000/svg"
       ref={svgRef}
       viewBox={`${-w / 2} ${-w / 2} ${w} ${w}`}
-      // viewBox={`0 0 270 270`}
     >
       <defs>
         <g id="flower-of-life">
           <circle r={r} />
-          {angles.map(
-            (
-              a // first ring
-            ) => (
-              <circle key={a} cx={pc(a, r).x} cy={pc(a, r).y} r={r} />
-            )
-          )}
-          {angles.map(
-            (
-              a // 2nd ring
-            ) => (
-              <circle key={a} cx={pc(a, r * 2).x} cy={pc(a, r * 2).y} r={r} />
-            )
-          )}
-          {angles.map(
-            (
-              a // vp ring
-            ) => (
-              <circle
-                key={a}
-                cx={pc(a - Math.PI / 2, r * 1.732).x}
-                cy={pc(a - Math.PI / 2, r * 1.732).y}
-                r={r}
-              />
-            )
-          )}
+          {angles.map(a => (
+            <circle key={a} cx={pc(a, r).x} cy={pc(a, r).y} r={r} />
+          ))}
+          {angles.map(a => (
+            <circle key={a} cx={pc(a, r * 2).x} cy={pc(a, r * 2).y} r={r} />
+          ))}
+          {angles.map(a => (
+            <circle
+              key={a}
+              cx={pc(a - Math.PI / 2, r * 1.732).x}
+              cy={pc(a - Math.PI / 2, r * 1.732).y}
+              r={r}
+            />
+          ))}
         </g>
         <path
           id="white-square"
@@ -128,7 +118,8 @@ const FlowerOfLife = () => {
         </filter>
       </defs>
       {/* <use href="#white-square" /> */}
-      <g mask="url(#fol-mask)" filter="url(#stroke)">
+      <image x={-w / 2} y={-w / 2} width={w} height={w} href={Screenshot} />
+      <g mask="url(#fol-mask)" filter="url(#stroke)" opacity={0.75}>
         <use
           href="#petals"
           stroke={stroke}
@@ -150,6 +141,7 @@ const FlowerOfLife = () => {
         stroke={stroke}
         strokeWidth={strokeWidth}
         fill="none"
+        opacity={0.75}
       />
     </svg>
   );
