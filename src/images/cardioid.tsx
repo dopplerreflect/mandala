@@ -1,6 +1,7 @@
-import { PHI, PHIm1, Point, radialPoint } from '../utils';
+import { PHIm1, Point, radialPoint } from '../utils';
 import useSaveSVG from '@dopplerreflect/use-save-svg';
-const Cardioid = () => {
+
+export default () => {
   const svgRef = useSaveSVG();
   const width = 1080;
   const c = 0; // width / 2;
@@ -58,4 +59,4 @@ const Cardioid = () => {
   );
 };
 
-export { Cardioid };
+// export default Cardioid;

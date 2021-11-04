@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useSaveSVG from '@dopplerreflect/use-save-svg';
 // import useSaveSVG from '../../../use-save-svg/src/index';
 
-const MaurerRose = (): JSX.Element => {
+export default (): JSX.Element => {
   const width = 1080;
   const n = 5;
   const [d, setD] = useState(1);
@@ -105,5 +105,3 @@ const MaurerRose = (): JSX.Element => {
     </>
   );
 };
-
-export { MaurerRose };

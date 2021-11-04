@@ -1,8 +1,8 @@
-import {
+import React, {
   useRef,
   useState,
-  useLayoutEffect,
   ChangeEvent,
+  useLayoutEffect,
   useEffect,
 } from 'react';
 import SVGTag from '../components/SVGTag';
@@ -18,9 +18,9 @@ const angles = [...Array(divisions).keys()].map(k => (360 / divisions) * k);
 const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: cx, y: cx });
 
-export const TimesTable = () => {
-  const [factor, setFactor] = useState(6);
-  const [colorLevel, setColorLevel] = useState(50);
+export default () => {
+  const [factor, setFactor] = useState(2);
+  const [colorLevel, setColorLevel] = useState(100);
   // const [divisions, setDivisions] = useState(360);
 
   // const svgElement = useRef<SVGRectElement>(null);
@@ -36,11 +36,10 @@ export const TimesTable = () => {
   //   return () => document.removeEventListener('mousemove', handleMouseMove);
   // }, []);
 
-  // const handleRangeChange = (event: ChangeEvent) =>
-  //   //@ts-ignore
-  //   setFactor(event.target.value);
-  // setFactor(factor => round(event.target.value, 10e2));
-
+  // const handleRangeChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   console.log(event);
+  //   setFactor(Number(event.target.value));
+  // };
   // const requestRef = useRef(0);
   // const animate = () => {
   //   setFactor(factor => round(factor + 0.001, 10e3));
@@ -67,6 +66,9 @@ export const TimesTable = () => {
           />
         ))}
       </g>
+      <text x={-width / 2 + 30} y={-width / 3} fontSize="32" fill="white">
+        {factor}
+      </text>
     </SVGTag>
   );
 };

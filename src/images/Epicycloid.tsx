@@ -1,8 +1,7 @@
-import React from 'react';
 import useSaveSVG from '@dopplerreflect/use-save-svg';
 import Star from '../components/star';
 
-const Epicycloid = () => {
+export default () => {
   const svgRef = useSaveSVG();
   const width = 1080;
   const R = width / 6;
@@ -66,5 +65,3 @@ const Epicycloid = () => {
     </svg>
   );
 };
-
-export { Epicycloid };

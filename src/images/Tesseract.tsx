@@ -5,7 +5,7 @@ type Point = {
   y: number;
 };
 
-const Tesseract = () => {
+export default () => {
   const svgRef = useSaveSVG();
   const w = 1080;
   const r1 = w / Math.sqrt(5);
@@ -157,5 +157,3 @@ const Tesseract = () => {
     </svg>
   );
 };
-
-export { Tesseract };

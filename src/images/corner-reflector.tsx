@@ -1,8 +1,7 @@
-import SVGTag from '../components/SVGTag';
 import useSaveSVG from '@dopplerreflect/use-save-svg';
 import { PHI } from '../utils';
 
-const CornerReflector = () => {
+export default () => {
   const svgRef = useSaveSVG();
   const w = 1080;
   const c = 0;
@@ -37,5 +36,3 @@ const CornerReflector = () => {
     </svg>
   );
 };
-
-export { CornerReflector };

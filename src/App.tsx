@@ -6,10 +6,12 @@ import formatXML from 'xml-formatter';
 
 import './App.css';
 
-import * as Images from './images/index';
+const Images = import.meta.globEager('./images/*.tsx');
 
-const imageKeys = Object.keys(Images);
-const images = Object.values(Images);
+const imageKeys = Object.keys(Images).map(s =>
+  s.replace(/\/images\//, '').replace(/\.tsx/, '')
+);
+const images = Object.values(Images).map(v => v.default);
 
 const imageIndexFromDocumentHash = (): false | number => {
   const imageIndexFromDocumentHash = imageKeys.indexOf(
@@ -29,26 +31,26 @@ const App = () => {
   let Component: React.FunctionComponent;
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    switch (event.code) {
+    switch (event.key) {
       case 'ArrowDown':
-      case 'KeyN':
+      case 'n':
         setImageIndex(imageIndex =>
           imageIndex + 1 === images.length ? 0 : imageIndex + 1
         );
         break;
       case 'ArrowUp':
-      case 'KeyP':
+      case 'p':
         setImageIndex(imageIndex =>
           imageIndex - 1 === -1 ? images.length - 1 : imageIndex - 1
         );
         break;
-      case 'KeyS':
+      case 's':
         toggleShowSource(showSource => !showSource);
         break;
-      case 'KeyD':
+      case 'd':
         toggleDisplayName(on => !on);
         break;
-      case 'KeyM':
+      case 'm':
         toggleDisplayMenu(on => !on);
         break;
       default:

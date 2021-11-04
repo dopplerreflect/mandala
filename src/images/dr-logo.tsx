@@ -1,6 +1,6 @@
 import useSaveSVG from '@dopplerreflect/use-save-svg';
 
-const DRLogo = () => {
+export default () => {
   const svgRef = useSaveSVG();
 
   const PI = Math.PI;
@@ -51,7 +51,7 @@ const DRLogo = () => {
             k3={1}
             result="composite2"
           />
-          <feComposite in="composite2" in2="offset" operator="darken" />
+          <feComposite in="composite2" in2="offset" operator="over" />
         </filter>
       </defs>
       <path
@@ -134,5 +134,3 @@ const DRLogo = () => {
     </svg>
   );
 };
-
-export { DRLogo };

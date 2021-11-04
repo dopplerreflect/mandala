@@ -1,4 +1,3 @@
-import SVGTag from '../components/SVGTag';
 import {
   radialPointString,
   radialPoint,
@@ -9,8 +8,7 @@ import {
   PHI,
 } from '../utils';
 
-// import useSaveSVG from '@dopplerreflect/use-save-svg';
-import useSaveSVG from '../../../use-save-svg/src/index';
+import useSaveSVG from '@dopplerreflect/use-save-svg';
 
 const rp = (angle: number, radius: number): Point =>
   radialPoint(angle, radius, { x: c, y: c });
@@ -26,7 +24,8 @@ const fy = c - r + r / 25;
 const d = 120;
 const a = 5;
 const ellipseAngles = [...Array(d).keys()].map(k => (360 / d) * k);
-const Elliptical = () => {
+
+export default () => {
   const svgRef = useSaveSVG();
   return (
     <svg
@@ -96,5 +95,3 @@ const Elliptical = () => {
     </svg>
   );
 };
-
-export { Elliptical };

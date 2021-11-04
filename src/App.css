@@ -52,7 +52,12 @@ code {
   width: calc(100vh / 8);
   height: calc(100vh / 8);
 }
-
+#control {
+  font-size: 20em;
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
 input[type='range'] {
   width: 90%;
   position: absolute;

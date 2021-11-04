@@ -2,7 +2,7 @@ import Outline from '../components/filters/outline';
 import useSaveSVG from '@dopplerreflect/use-save-svg';
 import { PHIm1, radialPointString, radialPoint, Point } from '../utils';
 
-const StarMandala = () => {
+export default () => {
   const svgRef = useSaveSVG();
   const width = 1080;
   const c = 0;
@@ -111,5 +111,3 @@ const StarMandala = () => {
     </svg>
   );
 };
-
-export { StarMandala };

@@ -13,9 +13,9 @@ const angles = [...Array(4).keys()].map(k => (360 / 4) * k - 90);
 const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: cx, y: cx });
 
-export function FourArc() {
+export default function FourArc() {
   return (
-    <SVGTag width={width} height={width}>
+    <SVGTag id="FourArc" width={width} height={width}>
       <defs>
         <Outline
           id="filter"

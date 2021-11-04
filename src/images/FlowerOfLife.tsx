@@ -17,7 +17,7 @@ const angles12 = [...Array(12).keys()].map(k => (360 / 12) * k);
 
 console.log(Screenshot);
 
-const FlowerOfLife = () => {
+export default () => {
   const svgRef = useSaveSVG();
   const w = 1080;
   const r = w / 9;
@@ -146,5 +146,3 @@ const FlowerOfLife = () => {
     </svg>
   );
 };
-
-export { FlowerOfLife };

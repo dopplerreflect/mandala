@@ -12,9 +12,9 @@ const r2 = r * PHIm1 ** 2;
 const rps = (angle: number, radius: number): string =>
   radialPointString(angle, radius, { x: cx, y: cy });
 
-export function SplitStar() {
+export default function SplitStar() {
   return (
-    <SVGTag width={width} height={width}>
+    <SVGTag id="SplitStar" width={width} height={width}>
       <defs>
         <linearGradient id="gradient" gradientTransform="rotate(90)">
           <stop offset="0%" stopColor="black" />
