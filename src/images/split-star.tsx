@@ -1,9 +1,8 @@
-import SVGTag from '../components/SVGTag';
 import { PHIm1, radialPointString } from '../utils';
 
 const width = 1080;
-const cx = width / 2;
-const cy = width / 2;
+const cx = 0;
+const cy = 0;
 const r = (width / 10) * 4.5;
 
 const a = [...Array(10).keys()].map(k => 36 * k);
@@ -14,7 +13,10 @@ const rps = (angle: number, radius: number): string =>
 
 export default function SplitStar() {
   return (
-    <SVGTag id="SplitStar" width={width} height={width}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
+    >
       <defs>
         <linearGradient id="gradient" gradientTransform="rotate(90)">
           <stop offset="0%" stopColor="black" />
@@ -55,6 +57,6 @@ export default function SplitStar() {
             )
         )}
       </g>
-    </SVGTag>
+    </svg>
   );
 }

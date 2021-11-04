@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 type OutlineProps = {
   id: string;
   radius: number;

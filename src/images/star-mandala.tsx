@@ -25,7 +25,7 @@ export default () => {
       viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
     >
       <defs>
-        <radialGradient id="radialGradient">
+        <radialGradient id="starMandalaGradient">
           <stop offset="0%" stopColor="red" />
           <stop offset="14%" stopColor="orange" />
           <stop offset="23.6%" stopColor="yellow" />
@@ -36,7 +36,7 @@ export default () => {
         <Outline id="outline" color="black" radius={(or * PHIm1 ** 8) / 4} />
         <g id="5points" filter="url(#outline)">
           <path
-            id="petal"
+            id="qbpetal"
             d={[
               `M${rps(a[39], r[4])}`,
               `Q${rps(a[41], r[3])}`,
@@ -59,10 +59,10 @@ export default () => {
             // strokeDasharray="8 21"
             fill="none"
           />
-          <use xlinkHref="#petal" transform={`rotate(72, ${c}, ${c})`} />
-          <use xlinkHref="#petal" transform={`rotate(144, ${c}, ${c})`} />
-          <use xlinkHref="#petal" transform={`rotate(216, ${c}, ${c})`} />
-          <use xlinkHref="#petal" transform={`rotate(288, ${c}, ${c})`} />
+          <use xlinkHref="#qbpetal" transform={`rotate(72, ${c}, ${c})`} />
+          <use xlinkHref="#qbpetal" transform={`rotate(144, ${c}, ${c})`} />
+          <use xlinkHref="#qbpetal" transform={`rotate(216, ${c}, ${c})`} />
+          <use xlinkHref="#qbpetal" transform={`rotate(288, ${c}, ${c})`} />
         </g>
       </defs>
       {/* <rect
@@ -76,7 +76,7 @@ export default () => {
         cx={c}
         cy={c}
         r={or}
-        fill="url(#radialGradient)"
+        fill="url(#starMandalaGradient)"
         fillOpacity={0.66}
       />
       {r.map((r, i) => (
