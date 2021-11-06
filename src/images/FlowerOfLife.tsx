@@ -15,8 +15,6 @@ const angles = [...Array(6).keys()].map(k => ((Math.PI * 2) / 6) * k);
 const angles24 = [...Array(24).keys()].map(k => ((Math.PI * 2) / 24) * k);
 const angles12 = [...Array(12).keys()].map(k => (360 / 12) * k);
 
-console.log(Screenshot);
-
 export default () => {
   const svgRef = useSaveSVG();
   const w = 1080;

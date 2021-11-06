@@ -252,10 +252,10 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
-"@dopplerreflect/drawring-utils@^0.0.4":
-  version "0.0.4"
-  resolved "https://npm.pkg.github.com/download/@dopplerreflect/drawring-utils/0.0.4/c99414aa3844128f416d2ac6f3c879fcecd67bce0767230af766706097479a6d#8163e7cac0681f7bef7d3cc4c1c7addfb94012bf"
-  integrity sha512-MrvylDbt6iToH217/6EojsIvR3XB3373pJJjax4RAolwLYYYUrNTYkE8KCUiJ3PMms+YO2+A/tUsxBNAvV4yCQ==
+"@dopplerreflect/drawring-utils@^0.0.5":
+  version "0.0.5"
+  resolved "https://npm.pkg.github.com/download/@dopplerreflect/drawring-utils/0.0.5/7f69fc7af329d33a1b0628f3dd8796f6bfb421c878b67a5454bd7fe8c0539058#dd6dc6cc063ccf5c7f1da95d26f7adf2c9281e8e"
+  integrity sha512-q4BFAjCW/DOld3Ay2ioJYNiqI6X5SYKhrxUZ/OhCCWMn3kTG0SU9Zbdn1sf4PquAJAmD5S/3cjPkty8aNlxLxw==
 
 "@dopplerreflect/use-save-svg@~0.0.3":
   version "0.0.5"

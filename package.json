@@ -7,7 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@dopplerreflect/drawring-utils": "^0.0.4",
+    "@dopplerreflect/drawring-utils": "^0.0.5",
     "@dopplerreflect/use-save-svg": "~0.0.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",

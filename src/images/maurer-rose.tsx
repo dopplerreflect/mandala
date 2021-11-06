@@ -5,7 +5,7 @@ import useSaveSVG from '@dopplerreflect/use-save-svg';
 export default (): JSX.Element => {
   const width = 1080;
   const n = 5;
-  const [d, setD] = useState(1);
+  const [d, setD] = useState(23);
 
   const maurerVertices = [...Array(361).keys()].map(theta => {
     const k = (theta * d * Math.PI) / 180;
@@ -28,7 +28,7 @@ export default (): JSX.Element => {
   const svgRef = useSaveSVG();
   return (
     <>
-      {/* <div>
+      <div>
         <input
           type="range"
           min={1}
@@ -36,7 +36,7 @@ export default (): JSX.Element => {
           value={d}
           onChange={e => setD(~~e.target.value)}
         />
-      </div> */}
+      </div>
       <svg
         ref={svgRef}
         id={`MaurerRose-n${n}-d${d}`}
@@ -92,7 +92,7 @@ export default (): JSX.Element => {
           // fillRule="evenodd"
           transform="rotate(180,0,0)"
         />
-        {/* <text
+        <text
           x={-width / 2}
           y={-width / 2 + 16}
           fontSize={16}
@@ -100,7 +100,7 @@ export default (): JSX.Element => {
           fill="white"
         >
           n={n} d={d}
-        </text> */}
+        </text>
       </svg>
     </>
   );
