@@ -1,5 +1,3 @@
-import React from 'react';
-
 type StarProps = {
   cx: number;
   cy: number;

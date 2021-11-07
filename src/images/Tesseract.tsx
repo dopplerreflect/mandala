@@ -53,7 +53,6 @@ export default () => {
   );
 
   const r2 = lineLength(ce.x, 0, ce.y, 0);
-  console.log({ r2 });
 
   return (
     <svg

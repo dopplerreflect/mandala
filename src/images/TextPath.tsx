@@ -30,11 +30,16 @@ export default () => {
           ].join(' ')}
         />
       </defs>
-      {/* <circle r={r} stroke="white" /> */}
-      <use href="#textPath" stroke="white" fill="none" />
-      <text fill="white" fontSize="6em" textAnchor="middle">
-        {/*//@ts-ignore*/}
-        <textPath startOffset="50%" href="#textPath">
+      <circle r={r} stroke="white" />
+      {/* <use href="#textPath" stroke="white" fill="none" /> */}
+      <text
+        fill="white"
+        fontSize="3em"
+        textAnchor="middle"
+        fontFamily="Roboto Mono"
+        fontWeight="600"
+      >
+        <textPath startOffset="50%" href="#textPath" letterSpacing="0.2em">
           @dopplerreflect
         </textPath>
       </text>
