@@ -38,8 +38,8 @@ export default () => {
       viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
     >
       <circle r={radius} stroke="white" fill="none" />
-      {threePolygons.map(p => (
-        <path d={pathFromArray(p)} stroke="white" fill="none" />
+      {threePolygons.map((p, i) => (
+        <path key={i} d={pathFromArray(p)} stroke="white" fill="none" />
       ))}
     </svg>
   );
