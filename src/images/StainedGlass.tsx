@@ -153,17 +153,43 @@ export default () => {
               rings[6]
             )}`,
             `L${radialPointString(angles[60], rings[6])}`,
-            // `A${rings[7]},${rings[7]} 0 0 0 ${radialPointString(
-            //   angles[60],
-            //   rings[7]
-            // )}`,
             `Z`,
+          ].join(' ')}
+        />
+        <path
+          id="leafInner"
+          d={[
+            `M${radialPointString(angles[0], rings[2])}`,
+            `Q${radialPointString(angles[4], rings[2])}`,
+            `${radialPointString(angles[4], radius - rings[2])}`,
+            `Q${radialPointString(angles[4], rings[2])}`,
+            `${radialPointString(angles[8], rings[2])}`,
+            `Q${radialPointString(angles[4], rings[2])}`,
+            `${radialPointString(angles[4], rings[3])}`,
+            `Q${radialPointString(angles[4], rings[2])}`,
+            `${radialPointString(angles[0], rings[2])}`,
+          ].join(' ')}
+        />
+        <path
+          id="leafOuter"
+          d={[
+            `M${radialPointString(angles[0], radius - rings[1])}`,
+            `C${radialPointString(angles[0], radius - rings[2])}`,
+            `${radialPointString(angles[4], radius - rings[2])}`,
+            `${radialPointString(angles[4], radius - rings[3])}`,
+            `C${radialPointString(angles[4], radius - rings[2])}`,
+            `${radialPointString(angles[8], radius - rings[2])}`,
+            `${radialPointString(angles[8], radius - rings[1])}`,
+            `Q${radialPointString(angles[4], radius - rings[1])}`,
+            `${radialPointString(angles[4], rings[1])}`,
+            `Q${radialPointString(angles[4], radius - rings[1])}`,
+            `${radialPointString(angles[0], rings[2])}`,
           ].join(' ')}
         />
       </defs>
       <use href="#bgSquare" fill="hsl(300, 33%, 75%)" />
 
-      {/* <circle r={radius} stroke="white" fill="hsl(240, 20%, 50%)" /> */}
+      <circle r={radius} stroke="white" fill="hsl(240, 20%, 10%)" />
       {angles.map((a, i) => (
         <g key={a}>
           <text
@@ -175,7 +201,7 @@ export default () => {
           >
             {i}
           </text>
-          <path d={`M0,0L${radialPointString(a, radius)}`} stroke="black" />
+          <path d={`M0,0L${radialPointString(a, radius)}`} stroke="white" />
         </g>
       ))}
       <g id="innerPoints" mask="url(#innerPetalMask)">
@@ -248,6 +274,24 @@ export default () => {
         strokeWidth={strokeWidth}
         fill={randomShade(240)}
       />
+      {[...Array(9).keys()].map(k => (
+        <g key={k}>
+          <use
+            href="#leafInner"
+            transform={`rotate(${(360 / 9) * k})`}
+            stroke="black"
+            strokeWidth={strokeWidth}
+            fill={randomShade(60)}
+          />
+          <use
+            href="#leafOuter"
+            transform={`rotate(${(360 / 9) * k})`}
+            stroke="black"
+            strokeWidth={strokeWidth}
+            fill={randomShade(90)}
+          />
+        </g>
+      ))}
       {rings.map((r, i) => (
         <g key={i}>
           <circle r={r} stroke="blue" fill="none" />

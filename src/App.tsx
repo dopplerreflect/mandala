@@ -9,8 +9,9 @@ import './App.css';
 const Images = import.meta.globEager('./images/*.tsx');
 
 const imageKeys = Object.keys(Images).map(s =>
-  s.replace(/\/images\//, '').replace(/\.tsx/, '')
+  s.replace(/\.\/images\//, '').replace(/\.tsx/, '')
 );
+console.log(imageKeys);
 const images = Object.values(Images).map(v => v.default);
 
 const imageIndexFromDocumentHash = (): false | number => {
