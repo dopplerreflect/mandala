@@ -1,3 +1,4 @@
+import SVGTag from '../components/SVGTag';
 import { PHI } from '../utils';
 
 const PI2 = Math.PI * 2;
@@ -5,10 +6,7 @@ const PI2 = Math.PI * 2;
 export default () => {
   const width = 1080;
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}
-    >
+    <SVGTag id="PHISin" width={1080}>
       <defs>
         <radialGradient id="bgGradient">
           <stop offset="0%" stopColor="hsl(240, 100%, 50%" />
@@ -56,6 +54,6 @@ export default () => {
           />
         );
       })}
-    </svg>
+    </SVGTag>
   );
 };
