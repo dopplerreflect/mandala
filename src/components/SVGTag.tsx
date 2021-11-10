@@ -9,6 +9,11 @@ type SVGTagProps = {
   children: ReactNode;
 };
 
+/** Returns an svg tag with referencing useSaveSvg. id attribute will be used
+ *  as the default filename when saved using useSaveSvg.
+ *  viewBox is centered at 0,0, but can be overridden with viewBox argument.
+ *  If height is not given, it is assigned to width.
+ */
 export default function SVGTag({
   id,
   width,

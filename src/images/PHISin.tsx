@@ -6,7 +6,7 @@ const PI2 = Math.PI * 2;
 export default () => {
   const width = 1080;
   return (
-    <SVGTag id="PHISin" width={1080}>
+    <SVGTag id="PHISin" width={width}>
       <defs>
         <radialGradient id="bgGradient">
           <stop offset="0%" stopColor="hsl(240, 100%, 50%" />
