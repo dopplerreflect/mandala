@@ -1,4 +1,5 @@
 import { radialPoint, radialPointString } from '@dopplerreflect/drawring-utils';
+import Screenshot from '../components/clouds.jpg';
 import SVGTag from '../components/SVGTag';
 
 const PI = Math.PI;
@@ -11,7 +12,7 @@ const randomShade = (hue: number): string => {
   if (Math.random() > 0.5) randomLightness = -randomLightness;
   return `hsla(${hue + randomHue}, ${100 - randomSaturation}%, ${
     50 + randomLightness
-  }%, 0.75)`;
+  }%, 0.66)`;
 };
 
 export default () => {
@@ -24,7 +25,8 @@ export default () => {
     <SVGTag
       id="StainedGlass"
       width={width}
-      viewBox={`${-rings[5]} ${-rings[3]} ${rings[2] * 2} ${rings[2] * 2}`}
+      // viewBox={`${-rings[5]} ${-rings[3]} ${rings[2] * 2} ${rings[2] * 2}`}
+      // viewBox={`${0} ${-width / 2} ${width / 2} ${width / 2}`}
     >
       <defs>
         <path
@@ -73,8 +75,35 @@ export default () => {
                 strokeWidth={strokeWidth}
                 fill="black"
               />
+              <circle r={rings[2]} fill="black" />
             </g>
           ))}
+        </mask>
+        <mask id="leafMask2">
+          <use href="#bgSquare" fill="white" />
+          {[...Array(18).keys()].map(k => (
+            <g key={k}>
+              <use
+                href="#leafInner"
+                transform={`rotate(${(360 / 18) * k})`}
+                stroke="black"
+                strokeWidth={strokeWidth}
+                fill="black"
+              />
+              <use
+                href="#leafOuter"
+                transform={`rotate(${(360 / 18) * k})`}
+                stroke="black"
+                strokeWidth={strokeWidth}
+                fill="black"
+              />
+              <circle r={rings[2]} fill="black" />
+            </g>
+          ))}
+        </mask>
+        <mask id="radiusMask">
+          <use href="#bgSquare" fill="rgba(255,255,255,0.25)" />
+          <circle r={radius} fill="white" />
         </mask>
         <path
           id="innerPetal"
@@ -182,7 +211,7 @@ export default () => {
           d={[
             `M${radialPointString(angles[0], rings[2])}`,
             `Q${radialPointString(angles[4], rings[2])}`,
-            `${radialPointString(angles[4], radius - rings[2])}`,
+            `${radialPointString(angles[4], radius - rings[3])}`,
             `Q${radialPointString(angles[4], rings[2])}`,
             `${radialPointString(angles[8], rings[2])}`,
             `Q${radialPointString(angles[4], rings[2])}`,
@@ -202,29 +231,45 @@ export default () => {
             `${radialPointString(angles[8], radius - rings[2])}`,
             `${radialPointString(angles[8], radius - rings[1])}`,
             `Q${radialPointString(angles[4], radius - rings[1])}`,
-            `${radialPointString(angles[4], rings[1])}`,
+            `${radialPointString(angles[4], radius - rings[3])}`,
             `Q${radialPointString(angles[4], radius - rings[1])}`,
             `${radialPointString(angles[0], rings[2])}`,
           ].join(' ')}
         />
       </defs>
-      <use href="#bgSquare" fill="hsl(300, 33%, 75%)" />
+      {/* <use href="#bgSquare" fill="hsl(300, 5%, 5%)" /> */}
 
-      <circle r={radius} stroke="white" fill="hsl(240, 20%, 10%)" />
+      {/* <circle r={radius} stroke="white" fill="hsl(240, 20%, 10%)" /> */}
+      <image
+        mask="url(#radiusMask)"
+        x={-width / 2}
+        y={-width / 2}
+        width={width}
+        height={width}
+        href={Screenshot}
+      />
+
       {angles.map((a, i) => (
         <g key={a}>
           <text
             x={radialPoint(a, radius + 20).x}
             y={radialPoint(a, radius + 20).y}
-            fill="black"
+            fill="orange"
             textAnchor="middle"
             dominantBaseline="middle"
           >
             {i}
           </text>
-          <path d={`M0,0L${radialPointString(a, radius)}`} stroke="white" />
+          <path d={`M0,0L${radialPointString(a, radius)}`} stroke="orange" />
         </g>
       ))}
+      {rings.map((r, i) => (
+        <g key={i}>
+          <circle r={r} stroke="blue" fill="none" />
+          <circle r={radius - r} stroke="yellow" fill="none" />
+        </g>
+      ))}
+
       <g id="innerPoints" mask="url(#innerPetalMask)">
         {[...Array(9).keys()].map(k => (
           <use
@@ -302,14 +347,14 @@ export default () => {
             transform={`rotate(${(360 / 9) * k})`}
             stroke="black"
             strokeWidth={strokeWidth}
-            fill={randomShade(60)}
+            fill={randomShade(240)}
           />
           <use
             href="#leafOuter"
             transform={`rotate(${(360 / 9) * k})`}
             stroke="black"
             strokeWidth={strokeWidth}
-            fill={randomShade(90)}
+            fill={randomShade(210)}
           />
         </g>
       ))}
@@ -320,7 +365,7 @@ export default () => {
             transform={`rotate(${(360 / 9) * k + 20})`}
             stroke="black"
             strokeWidth={strokeWidth}
-            fill={randomShade(60)}
+            fill={randomShade(180)}
           />
           <use
             href="#leafOuter"
@@ -331,11 +376,18 @@ export default () => {
           />
         </g>
       ))}
-      {rings.map((r, i) => (
-        <g key={i}>
-          {/* <circle r={r} stroke="blue" fill="none" /> */}
-          {/* <circle r={radius - r} stroke="yellow" fill="none" /> */}
-        </g>
+      {[...Array(18).keys()].map(k => (
+        <circle
+          key={k}
+          mask="url(#leafMask2)"
+          cx={radialPoint(angles[2], radius - rings[2]).x}
+          cy={radialPoint(angles[2], radius - rings[2]).y}
+          r={rings[6]}
+          transform={`rotate(${(360 / 18) * k})`}
+          stroke="black"
+          strokeWidth={strokeWidth}
+          fill={randomShade(120)}
+        />
       ))}
     </SVGTag>
   );
