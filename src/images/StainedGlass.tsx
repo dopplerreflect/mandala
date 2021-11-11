@@ -24,7 +24,7 @@ export default () => {
     <SVGTag
       id="StainedGlass"
       width={width}
-      // viewBox={`${-rings[2]} ${-rings[2]} ${rings[2] * 2} ${rings[2] * 2}`}
+      viewBox={`${-rings[5]} ${-rings[3]} ${rings[2] * 2} ${rings[2] * 2}`}
     >
       <defs>
         <path
@@ -54,6 +54,27 @@ export default () => {
             strokeWidth={strokeWidth}
             fill={'black'}
           />
+        </mask>
+        <mask id="leafMask">
+          <use href="#bgSquare" fill="white" />
+          {[...Array(9).keys()].map(k => (
+            <g key={k}>
+              <use
+                href="#leafInner"
+                transform={`rotate(${(360 / 9) * k})`}
+                stroke="black"
+                strokeWidth={strokeWidth}
+                fill="black"
+              />
+              <use
+                href="#leafOuter"
+                transform={`rotate(${(360 / 9) * k})`}
+                stroke="black"
+                strokeWidth={strokeWidth}
+                fill="black"
+              />
+            </g>
+          ))}
         </mask>
         <path
           id="innerPetal"
@@ -292,10 +313,28 @@ export default () => {
           />
         </g>
       ))}
+      {[...Array(9).keys()].map(k => (
+        <g key={k} mask="url(#leafMask)">
+          <use
+            href="#leafInner"
+            transform={`rotate(${(360 / 9) * k + 20})`}
+            stroke="black"
+            strokeWidth={strokeWidth}
+            fill={randomShade(60)}
+          />
+          <use
+            href="#leafOuter"
+            transform={`rotate(${(360 / 9) * k + 20})`}
+            stroke="black"
+            strokeWidth={strokeWidth}
+            fill={randomShade(150)}
+          />
+        </g>
+      ))}
       {rings.map((r, i) => (
         <g key={i}>
-          <circle r={r} stroke="blue" fill="none" />
-          <circle r={radius - r} stroke="yellow" fill="none" />
+          {/* <circle r={r} stroke="blue" fill="none" /> */}
+          {/* <circle r={radius - r} stroke="yellow" fill="none" /> */}
         </g>
       ))}
     </SVGTag>
