@@ -10,10 +10,11 @@ const randomShade = (hue: number): string => {
   const randomSaturation = Math.random() * 10;
   let randomLightness = Math.random() * 10;
   if (Math.random() > 0.5) randomLightness = -randomLightness;
-  return `hsla(${hue + randomHue}, ${100 - randomSaturation}%, ${
+  return `hsl(${hue + randomHue}, ${100 - randomSaturation}%, ${
     50 + randomLightness
-  }%, 0.66)`;
+  }%)`;
 };
+const fillOpacity = 0.66;
 
 export default () => {
   const width = 1080;
@@ -36,11 +37,11 @@ export default () => {
           }Z`}
         />
         <mask id="innerPetalMask">
-          <use href="#bgSquare" fill="white" />
+          <use xlinkHref="#bgSquare" fill="white" />
           {[...Array(9).keys()].map(k => (
             <use
               key={k}
-              href="#innerPetal"
+              xlinkHref="#innerPetal"
               transform={`rotate(${(360 / 9) * k})`}
               stroke="black"
               strokeWidth={strokeWidth}
@@ -49,27 +50,27 @@ export default () => {
           ))}
         </mask>
         <mask id="innerPetalSpikeMask">
-          <use href="#bgSquare" fill="white" />
+          <use xlinkHref="#bgSquare" fill="white" />
           <use
-            href="#innerPetalSpike"
+            xlinkHref="#innerPetalSpike"
             stroke="black"
             strokeWidth={strokeWidth}
             fill={'black'}
           />
         </mask>
         <mask id="leafMask">
-          <use href="#bgSquare" fill="white" />
+          <use xlinkHref="#bgSquare" fill="white" />
           {[...Array(9).keys()].map(k => (
             <g key={k}>
               <use
-                href="#leafInner"
+                xlinkHref="#leafInner"
                 transform={`rotate(${(360 / 9) * k})`}
                 stroke="black"
                 strokeWidth={strokeWidth}
                 fill="black"
               />
               <use
-                href="#leafOuter"
+                xlinkHref="#leafOuter"
                 transform={`rotate(${(360 / 9) * k})`}
                 stroke="black"
                 strokeWidth={strokeWidth}
@@ -80,18 +81,18 @@ export default () => {
           ))}
         </mask>
         <mask id="leafMask2">
-          <use href="#bgSquare" fill="white" />
+          <use xlinkHref="#bgSquare" fill="white" />
           {[...Array(18).keys()].map(k => (
             <g key={k}>
               <use
-                href="#leafInner"
+                xlinkHref="#leafInner"
                 transform={`rotate(${(360 / 18) * k})`}
                 stroke="black"
                 strokeWidth={strokeWidth}
                 fill="black"
               />
               <use
-                href="#leafOuter"
+                xlinkHref="#leafOuter"
                 transform={`rotate(${(360 / 18) * k})`}
                 stroke="black"
                 strokeWidth={strokeWidth}
@@ -102,7 +103,7 @@ export default () => {
           ))}
         </mask>
         <mask id="radiusMask">
-          <use href="#bgSquare" fill="rgba(255,255,255,0.25)" />
+          <use xlinkHref="#bgSquare" fill="rgba(255,255,255,0.25)" />
           <circle r={radius} fill="white" />
         </mask>
         <path
@@ -237,7 +238,7 @@ export default () => {
           ].join(' ')}
         />
       </defs>
-      {/* <use href="#bgSquare" fill="hsl(300, 5%, 5%)" /> */}
+      {/* <use xlinkHref="#bgSquare" fill="hsl(300, 5%, 5%)" /> */}
 
       {/* <circle r={radius} stroke="white" fill="hsl(240, 20%, 10%)" /> */}
       <image
@@ -246,7 +247,7 @@ export default () => {
         y={-width / 2}
         width={width}
         height={width}
-        href={Screenshot}
+        xlinkHref={Screenshot}
       />
 
       {angles.map((a, i) => (
@@ -274,11 +275,12 @@ export default () => {
         {[...Array(9).keys()].map(k => (
           <use
             key={k}
-            href="#innerPoint"
+            xlinkHref="#innerPoint"
             transform={`rotate(${(360 / 9) * k})`}
             stroke="black"
             strokeWidth={strokeWidth}
             fill={randomShade(60)}
+            fillOpacity={0.33}
           />
         ))}
       </g>
@@ -286,52 +288,57 @@ export default () => {
         {[...Array(9).keys()].map(k => (
           <use
             key={k}
-            href="#innerPetalSpike"
+            xlinkHref="#innerPetalSpike"
             transform={`rotate(${(360 / 9) * k})`}
             stroke="black"
             strokeWidth={strokeWidth}
             fill={randomShade(300)}
+            fillOpacity={0.33}
           />
         ))}
       </g>
       {[...Array(9).keys()].map(k => (
         <use
           key={k}
-          href="#innerPetal"
+          xlinkHref="#innerPetal"
           transform={`rotate(${(360 / 9) * k})`}
           stroke="black"
           strokeWidth={strokeWidth}
           fill={randomShade(270)}
+          fillOpacity={fillOpacity}
         />
       ))}
       {[...Array(9).keys()].map(k => (
         <use
           key={k}
-          href="#spikeSeperator"
+          xlinkHref="#spikeSeperator"
           transform={`rotate(${(360 / 9) * k})`}
           stroke="black"
           strokeWidth={strokeWidth}
           fill={randomShade(30)}
+          fillOpacity={fillOpacity}
         />
       ))}
       {[...Array(9).keys()].map(k => (
         <use
           key={k}
-          href="#abcd"
+          xlinkHref="#abcd"
           transform={`rotate(${(360 / 9) * k})`}
           stroke="black"
           strokeWidth={strokeWidth}
           fill={randomShade(90)}
+          fillOpacity={fillOpacity}
         />
       ))}
       {[...Array(3).keys()].map(k => (
         <use
           key={k}
-          href="#abcde"
+          xlinkHref="#abcde"
           transform={`rotate(${(360 / 3) * k})`}
           stroke="black"
           strokeWidth={strokeWidth}
           fill={randomShade(180)}
+          fillOpacity={fillOpacity}
         />
       ))}
       <circle
@@ -339,40 +346,45 @@ export default () => {
         stroke="black"
         strokeWidth={strokeWidth}
         fill={randomShade(240)}
+        fillOpacity={fillOpacity}
       />
       {[...Array(9).keys()].map(k => (
         <g key={k}>
           <use
-            href="#leafInner"
+            xlinkHref="#leafInner"
             transform={`rotate(${(360 / 9) * k})`}
             stroke="black"
             strokeWidth={strokeWidth}
             fill={randomShade(240)}
+            fillOpacity={0.33}
           />
           <use
-            href="#leafOuter"
+            xlinkHref="#leafOuter"
             transform={`rotate(${(360 / 9) * k})`}
             stroke="black"
             strokeWidth={strokeWidth}
             fill={randomShade(210)}
+            fillOpacity={fillOpacity}
           />
         </g>
       ))}
       {[...Array(9).keys()].map(k => (
         <g key={k} mask="url(#leafMask)">
           <use
-            href="#leafInner"
+            xlinkHref="#leafInner"
             transform={`rotate(${(360 / 9) * k + 20})`}
             stroke="black"
             strokeWidth={strokeWidth}
             fill={randomShade(180)}
+            fillOpacity={0.33}
           />
           <use
-            href="#leafOuter"
+            xlinkHref="#leafOuter"
             transform={`rotate(${(360 / 9) * k + 20})`}
             stroke="black"
             strokeWidth={strokeWidth}
             fill={randomShade(150)}
+            fillOpacity={fillOpacity}
           />
         </g>
       ))}
@@ -387,6 +399,7 @@ export default () => {
           stroke="black"
           strokeWidth={strokeWidth}
           fill={randomShade(120)}
+          fillOpacity={0.33}
         />
       ))}
     </SVGTag>
