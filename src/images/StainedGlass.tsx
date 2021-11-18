@@ -20,8 +20,8 @@ export default () => {
   const width = 1080;
   const radius = width * 0.45;
   const strokeWidth = (width / 1080) * 4;
-  const angles = [...Array(72).keys()].map((k) => ((2 * PI) / 72) * k - PI / 2);
-  const rings = [...Array(10).keys()].map((k) => radius * (PHI - 1) ** k);
+  const angles = [...Array(72).keys()].map(k => ((2 * PI) / 72) * k - PI / 2);
+  const rings = [...Array(10).keys()].map(k => radius * (PHI - 1) ** k);
   return (
     <SVGTag
       id='StainedGlass'
@@ -38,7 +38,7 @@ export default () => {
         />
         <mask id='innerPetalMask'>
           <use xlinkHref='#bgSquare' fill='white' />
-          {[...Array(9).keys()].map((k) => (
+          {[...Array(9).keys()].map(k => (
             <use
               key={k}
               xlinkHref='#innerPetal'
@@ -60,7 +60,7 @@ export default () => {
         </mask>
         <mask id='leafMask'>
           <use xlinkHref='#bgSquare' fill='white' />
-          {[...Array(9).keys()].map((k) => (
+          {[...Array(9).keys()].map(k => (
             <g key={k}>
               <use
                 xlinkHref='#leafInner'
@@ -82,7 +82,7 @@ export default () => {
         </mask>
         <mask id='leafMask2'>
           <use xlinkHref='#bgSquare' fill='white' />
-          {[...Array(18).keys()].map((k) => (
+          {[...Array(18).keys()].map(k => (
             <g key={k}>
               <use
                 xlinkHref='#leafInner'
@@ -103,7 +103,7 @@ export default () => {
         </mask>
         <mask id='leafMask3'>
           <use xlinkHref='#bgSquare' fill='white' />
-          {[...Array(18).keys()].map((k) => (
+          {[...Array(18).keys()].map(k => (
             <g key={k}>
               <use
                 xlinkHref='#leafInner'
@@ -300,7 +300,7 @@ export default () => {
       ))} */}
 
       <g id='innerPoints' mask='url(#innerPetalMask)'>
-        {[...Array(9).keys()].map((k) => (
+        {[...Array(9).keys()].map(k => (
           <use
             key={k}
             xlinkHref='#innerPoint'
@@ -313,7 +313,7 @@ export default () => {
         ))}
       </g>
       <g id='innerPetals'>
-        {[...Array(9).keys()].map((k) => (
+        {[...Array(9).keys()].map(k => (
           <use
             key={k}
             xlinkHref='#innerPetalSpike'
@@ -325,7 +325,7 @@ export default () => {
           />
         ))}
       </g>
-      {[...Array(9).keys()].map((k) => (
+      {[...Array(9).keys()].map(k => (
         <use
           key={k}
           xlinkHref='#innerPetal'
@@ -336,7 +336,7 @@ export default () => {
           fillOpacity={fillOpacity}
         />
       ))}
-      {[...Array(9).keys()].map((k) => (
+      {[...Array(9).keys()].map(k => (
         <use
           key={k}
           xlinkHref='#spikeSeperator'
@@ -347,7 +347,7 @@ export default () => {
           fillOpacity={fillOpacity}
         />
       ))}
-      {[...Array(9).keys()].map((k) => (
+      {[...Array(9).keys()].map(k => (
         <use
           key={k}
           xlinkHref='#abcd'
@@ -358,7 +358,7 @@ export default () => {
           fillOpacity={fillOpacity}
         />
       ))}
-      {[...Array(3).keys()].map((k) => (
+      {[...Array(3).keys()].map(k => (
         <use
           key={k}
           xlinkHref='#abcde'
@@ -376,7 +376,7 @@ export default () => {
         fill={randomShade(240)}
         fillOpacity={fillOpacity}
       />
-      {[...Array(9).keys()].map((k) => (
+      {[...Array(9).keys()].map(k => (
         <g key={k}>
           <use
             xlinkHref='#leafInner'
@@ -396,7 +396,7 @@ export default () => {
           />
         </g>
       ))}
-      {[...Array(9).keys()].map((k) => (
+      {[...Array(9).keys()].map(k => (
         <g key={k} mask='url(#leafMask)'>
           <use
             xlinkHref='#leafInner'
@@ -416,7 +416,7 @@ export default () => {
           />
         </g>
       ))}
-      {[...Array(18).keys()].map((k) => (
+      {[...Array(18).keys()].map(k => (
         <circle
           key={k}
           mask='url(#leafMask2)'
@@ -430,7 +430,7 @@ export default () => {
           fillOpacity={0.33}
         />
       ))}
-      {[...Array(18).keys()].map((k) => (
+      {[...Array(18).keys()].map(k => (
         <path
           mask='url(#leafMask3)'
           key={k}
@@ -452,7 +452,7 @@ export default () => {
           fillOpacity={fillOpacity}
         />
       ))}
-      {[...Array(18).keys()].map((k) => (
+      {[...Array(18).keys()].map(k => (
         <g key={k}>
           <path
             d={[
