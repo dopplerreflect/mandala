@@ -11,7 +11,6 @@ const Images = import.meta.globEager('./images/*.tsx');
 const imageKeys = Object.keys(Images).map(s =>
   s.replace(/\.\/images\//, '').replace(/\.tsx/, '')
 );
-console.log(imageKeys);
 const images = Object.values(Images).map(v => v.default);
 
 const imageIndexFromDocumentHash = (): false | number => {
@@ -88,15 +87,15 @@ const App = () => {
       )}
     </code>
   ) : (
-    <div className="svg">
+    <div className='svg'>
       <div
         style={{ display: displayName ? 'inline' : 'none' }}
-        className="image-name"
+        className='image-name'
       >
         {imageKeys[imageIndex]}
       </div>
       {displayMenu && (
-        <div id="menu">
+        <div id='menu'>
           <ul>
             {imageKeys.map((name, i) => {
               let Component = images[i];
