@@ -21,9 +21,7 @@ const imageIndexFromDocumentHash = (): false | number => {
 };
 
 const App = () => {
-  const [imageIndex, setImageIndex] = useState(
-    imageIndexFromDocumentHash() || 0
-  );
+  const [imageIndex, setImageIndex] = useState(imageIndexFromDocumentHash() || 0);
   const [showSource, toggleShowSource] = useState(false);
   const [displayName, toggleDisplayName] = useState(false);
   const [displayMenu, toggleDisplayMenu] = useState(false);
@@ -31,12 +29,12 @@ const App = () => {
   let Component: React.FunctionComponent;
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    switch (event.key) {
+    const { ctrlKey, metaKey, key } = event;
+    if (ctrlKey || metaKey) return; // keeps us from interfering with useSaveSvg event listener
+    switch (key) {
       case 'ArrowDown':
       case 'n':
-        setImageIndex(imageIndex =>
-          imageIndex + 1 === images.length ? 0 : imageIndex + 1
-        );
+        setImageIndex(imageIndex => (imageIndex + 1 === images.length ? 0 : imageIndex + 1));
         break;
       case 'ArrowUp':
       case 'p':
@@ -79,19 +77,13 @@ const App = () => {
 
   return showSource ? (
     <code>
-      {formatXML(
-        replaceSelfClosingTags(ReactDOMServer.renderToString(<Component />)),
-        {
-          indentation: '  ',
-        }
-      )}
+      {formatXML(replaceSelfClosingTags(ReactDOMServer.renderToString(<Component />)), {
+        indentation: '  ',
+      })}
     </code>
   ) : (
     <div className='svg'>
-      <div
-        style={{ display: displayName ? 'inline' : 'none' }}
-        className='image-name'
-      >
+      <div style={{ display: displayName ? 'inline' : 'none' }} className='image-name'>
         {imageKeys[imageIndex]}
       </div>
       {displayMenu && (
@@ -102,9 +94,7 @@ const App = () => {
               return (
                 <li
                   key={name}
-                  className={
-                    imageIndex === imageKeys.indexOf(name) ? 'active' : ''
-                  }
+                  className={imageIndex === imageKeys.indexOf(name) ? 'active' : ''}
                   onClick={() => setImageIndex(imageKeys.indexOf(name))}
                 >
                   <Component />
