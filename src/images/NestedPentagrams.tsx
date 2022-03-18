@@ -26,7 +26,7 @@ export default function NestedPentagrams() {
 
   const stroke = 'hsl(225, 100%, 50%)';
   const fill = 'hsl(45, 100%, 50%)';
-  const fillOpacity = 0;
+  const fillOpacity = 0.75;
 
   return (
     <svg
@@ -44,13 +44,13 @@ export default function NestedPentagrams() {
           <g key={r}>
             <circle
               r={outerRadius - innerRadius * PHIm1 ** (r - 1)}
-              stroke={fill}
+              stroke={stroke}
               fill={'none'}
               fillOpacity={fillOpacity}
             />
             <path
               d={starPath(outerRadius - innerRadius * PHIm1 ** (r - 1))}
-              stroke={fill}
+              stroke={stroke}
               fill='none'
             />
           </g>
@@ -79,6 +79,26 @@ export default function NestedPentagrams() {
           </g>
         ))}
       </g>
+      <path
+        d={starPath(innerRadius * PHIm1 ** 2)}
+        stroke={stroke}
+        fill={fill}
+        fillOpacity={fillOpacity}
+      />
+      {[...Array(5).keys()].map(k => (
+        <g key={k}>
+          <path
+            d={starPath(
+              innerRadius * PHIm1 ** 2,
+              radialPoint(angles10[0], innerRadius * PHIm1)
+            )}
+            stroke={stroke}
+            fill={fill}
+            fillOpacity={fillOpacity}
+            transform={`rotate(${72 * k + 36})`}
+          />
+        </g>
+      ))}
       {/* <use href='#starStar' transform='rotate(36)' /> */}
     </svg>
   );
