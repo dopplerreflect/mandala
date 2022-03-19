@@ -104,6 +104,8 @@ export default function NestedPentagrams() {
             />
           </g>
         ))}
+        <circle r={innerRadius * PHIm1} stroke={stroke} fill='none' />
+        <circle r={innerRadius * PHIm1 ** 2} stroke={stroke} fill='none' />
       </g>
     </svg>
   );
